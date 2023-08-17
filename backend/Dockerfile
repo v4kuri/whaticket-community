@@ -22,12 +22,10 @@ RUN chmod +x /usr/local/bin/dumb-init
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 WORKDIR /usr/src/app
-COPY backend/package*.json ./   # Copia o package.json da pasta backend para a raiz do contexto
-
+COPY backend/package*.json ./
 RUN npm install
 
-COPY backend ./   # Copia todo o conteúdo da pasta backend para o contexto
-
+COPY . .
 RUN npm run build
 
 ENV NODE_ENV=production
